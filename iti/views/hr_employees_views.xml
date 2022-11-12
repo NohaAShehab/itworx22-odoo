@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <record id="hr_employeee_view_form" model="ir.ui.view">
+            <field name="name">HR Employee national ID</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                  <field name="coach_id" position="after">
+                    <field  name="national_id_number"/>
+                </field>
+
+            </field>
+
+        </record>
+
+    </data>
+
+</odoo>

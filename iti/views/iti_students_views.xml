@@ -15,14 +15,37 @@
             <field name="model">iti.students</field>
             <field name="arch" type="xml">
                 <form string="Create new Student">
+                    <header>
+                        <button  string="To the next stage"
+                                 name="to_next"
+                                 type="object"
+
+                                 attrs="{
+                                 'invisible':[('state', '=','rejected')]
+                                    }"
+                        />
+
+                          <button  string="To the prev stage"
+                                 name="to_prev"
+                                 type="object"/>
+<!--                           <field name="state"  widget="statusbar"/>-->
+                        <field name="state"  widget="statusbar">
+                            <button  type="action" string="Tracks" name="%(iti_tracks_action)d"/>
+
+                        </field>
+                    </header>
                     <sheet>
                         <group>
                             <group string="Basic info">
                             <field name="name"/>
                             <field name="email"/>
                             <field name="age"/>
+                                <field name="info"/>
+
                             <field name="salary"/>
-                            <field name="image" />
+                            <field name="tax" readonly="True"/>
+                                <field name="computed_tax" />
+                            <field name="image"  widget="image"/>
 <!--                            <field name="track_id"-->
 <!--                                domain = "[('opened','=', True)]"-->
 <!--                            />-->
@@ -76,6 +99,7 @@
                     <field name="age"/>
                     <field name="salary"/>
                     <field name="track_id"/>
+
                 </tree>
             </field>
         </record>
