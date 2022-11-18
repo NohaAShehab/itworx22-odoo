@@ -1,0 +1,129 @@
+<odoo>
+    <data>
+
+        <record id="iti_students_action" model="ir.actions.act_window">
+            <field name="name">Student</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">iti.students</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        
+
+        <record id="iti_students_view_form" model="ir.ui.view">
+            <field name="name">iti_students_view_form</field>
+            <field name="model">iti.students</field>
+            <field name="arch" type="xml">
+                <form string="Create new Student">
+                    <header>
+                        <button  string="To the next stage"
+                                 name="to_next"
+                                 type="object"
+
+                                 attrs="{
+                                 'invisible':[('state', '=','rejected')]
+                                    }"
+                        />
+
+                          <button  string="To the prev stage"
+                                 name="to_prev"
+                                 type="object"/>
+<!--                           <field name="state"  widget="statusbar"/>-->
+                        <field name="state"  widget="statusbar">
+                            <button  type="action" string="Tracks" name="%(iti_tracks_action)d"/>
+
+                        </field>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group string="Basic info">
+                            <field name="name"/>
+                            <field name="email"/>
+                            <field name="age"/>
+                                <field name="info"/>
+
+                            <field name="salary"/>
+                            <field name="tax" readonly="True"/>
+                                <field name="computed_tax" />
+                            <field name="image"  widget="image"/>
+<!--                            <field name="track_id"-->
+<!--                                domain = "[('opened','=', True)]"-->
+<!--                            />-->
+                            <field name="track_id"/>
+                            <field name="track_opened"/>
+                            <field
+                                name="military_cert"
+                                attrs="{
+                                    'invisible': [('gender','=', 'f')],
+                                    'required': [('gender', '=', 'm')]
+                                }"
+                            />
+                            </group>
+                            <group string="Additional information">
+                        <field name="gender"/>
+                        <field name="is_accepted"/>
+                        <field name="registered_at" readonly="True"/>
+                        <field name="interview_time" />
+
+                    </group>
+                        </group>
+                        <group string="More about me">
+                    <notebook >
+                          <page  string="Skills">
+                                <field name="skills_ids"/>
+                            </page>
+                            <page  string="Bio">
+                                <field name="bio"/>
+                            </page>
+                            <page string="CV">
+                                 <field name="cv"/>
+                            </page>
+
+                         <page string="Log History">
+                                 <field name="log_history_ids"  >
+                                     <tree  >
+                            <!--                 editable="top" enable inline adding to the tree-->
+                                         <field name="create_uid"></field>
+                                         <field name="create_date"></field>
+                                          <field name="description"></field>
+                                     </tree>
+
+                                 </field>
+                            </page>
+
+                    </notebook>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        
+
+        <record id="iti_students_view_tree" model="ir.ui.view">
+            <field name="name">iti_students_view_tree</field>
+            <field name="model">iti.students</field>
+            <field name="arch" type="xml">
+                <tree string="iti_students_tree"   >
+                    <field name="id"/>
+                    <field name="name"/>
+                    <field name="email"/>
+                    <field name="age"/>
+                    <field name="salary"/>
+                    <field name="track_id"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <menuitem id="iti_root_menu" name="ITI" />
+        <menuitem id="iti_data_menu" name="Data" parent="iti_root_menu"/>
+        <menuitem id="iti_students_menu" name="Students"
+                  action="iti_students_action"
+                  parent="iti_data_menu"/>
+
+
+
+    </data>
+</odoo>

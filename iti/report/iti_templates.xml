@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+       <template id="iti_students_card_template">
+           <template id="iti_students_templates">
+           <t t-call="web.html_container">
+<!--               <t t-call="web.internal_layout">-->
+
+                   <t t-foreach="docs" t-as="student">
+                       <t t-call="web.external_layout">
+                       <div class="container">
+
+                           <h1 style="color:red">Student Information</h1>
+                           <p t-out="student.name"/>
+                            <p t-out="student.track_id"/>
+                           <p t-out="student.age"/>
+                                    <img t-attf-src="data:image/jpg;base64,{{student.image}}" style="align:right; width:200px;height:150px;"/>
+
+                       </div>
+
+                   </t>
+               </t>
+           </t>
+       </template>
+    </template>
+
+
+    </data>
+
+</odoo>

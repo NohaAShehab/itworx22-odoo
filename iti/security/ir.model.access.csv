@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+employee_student_access,employee_student_access,model_iti_students,iti_employee_group,1,0,1,0
+employee_skills_access,employee_skills_access,model_iti_skills,iti_employee_group,1,0,0,0
+employee_log_access,employee_log_access,model_iti_log_history,iti_employee_group,1,1,1,0
+employee_track_access,employee_track_access,model_iti_tracks,iti_employee_group,1,0,0,0
+manager_student_access,manager_student_access,model_iti_students,iti_manager_group,1,1,1,1
+manager_skills_access,manager_skills_access,model_iti_skills,iti_manager_group,1,1,1,1
+manager_log_access,manager_log_access,model_iti_log_history,iti_manager_group,1,1,1,1
+manager_track_access,manager_track_access,model_iti_tracks,iti_manager_group,1,1,1,1
